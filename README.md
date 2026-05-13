@@ -29,9 +29,21 @@ SSIVguber/
 └── README.md
 
 ## How to reproduce
-(1) we can download the population microdata file (77 million data points) from the Integrated Public Use Microdata Series (IPUMS) for the years 2000 to 2023 and agrregate the data in Stata (Stata script "01_aggregate_ipums.do"); we can calculate (i). the the citizen population and naturalized immigrant population in each state, (ii). immigrant population from each country in each state, (iii). immigrant population from each country in USA.
-(2) The results from the Stata can be pasted into Excel files "state_year_population.xlsx", "state_year_origin_population.xlsx", "nation_year_origin_population.xlsx".
-(3) Following the R script "02_construct_panel_and_regression.R", we can import the three Excel files and generate immigration-related variables. Then, we can import the Excel files "income_data" and "voting_data" for constructing the dependent and variable and the control variables. Finally, we can merge all the relevant datasets and run the regressions.
+（1）Download the IPUMS population microdata (approximately 77 million observations) for the years 2000–2023 from the Integrated Public Use Microdata Series (IPUMS).
+（2）Run the Stata script `01_aggregate_ipums.do` to aggregate the microdata and construct:
+   - the citizen population and naturalized immigrant population in each state-year,
+   - the immigrant population from each origin country in each state-year,
+   - the immigrant population from each origin country at the national level.
+（3）Export the aggregated datasets to the following Excel files:
+   - `state_year_population.xlsx`
+   - `state_year_origin_population.xlsx`
+   - `nation_year_origin_population.xlsx`
+（4）Run the R script `02_construct_panel_and_regression.R` to:
+   - construct immigration-related variables,
+   - import income and voting datasets,
+   - construct dependent and control variables,
+   - merge all datasets into a state-year panel,
+   - run OLS and IV regressions.
 
 ## Main findings
 (1) A higher immigration ratio leads to a higher voting share received by Democratic candidates in gubernatorial elections
